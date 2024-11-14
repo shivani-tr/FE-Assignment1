@@ -1,17 +1,11 @@
 import { Link } from "react-router-dom";
 import Table from "./Table";
 // import header1 from './data.json'
+import dataInfo from './data.json'
 const First=()=>{
 
-    const header = ['Company', 'Contact', 'Country'];
-    const data = [
-      { Company: 'Alfedro Fransis', Contact: 'Maria Jones', Country: 'USA' },
-      { Company: 'Smith and co', Contact: 'Shawn Trevor', Country: 'Canada' },
-      { Company: 'Green olives', Contact: 'Ben Illinois', Country: 'UK' },
-      { Company: 'Alfedro Fransis', Contact: 'Maria Jones', Country: 'USA' },
-      { Company: 'Smith and co', Contact: 'Shawn Trevor', Country: 'Canada' },
-      { Company: 'Green olives', Contact: 'Ben Illinois', Country: 'UK' },
-    ]
+    const header = dataInfo.pageOne.headerData;
+    const data = dataInfo.pageOne.dataInfo;
   
   
     return (
