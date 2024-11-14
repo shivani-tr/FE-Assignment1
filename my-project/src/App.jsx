@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-     <h1 className='text-5xl font-bold '>Table Component</h1>
+     <h1 className='text-5xl font-bold mb-20'>Table Component</h1>
      {/* <h3 className="text-xl text-slate-300 font-semibold">(Just a demo)</h3> */}
      <Router>
       <Routes>

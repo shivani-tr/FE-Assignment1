@@ -20,7 +20,6 @@ const Table = (({headers, data})=>{
                 {data.map((row,rowIndex)=>(
                     <tr key={rowIndex}
                     className={rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}> 
-                        {/* the style for alt rows is not working */}
                         {headers.map((col, colIndex)=>(
                             <td key={colIndex}
                                 className="text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700"> 
