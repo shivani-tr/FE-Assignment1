@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 const Table = (({headers, data})=>{
     return(
         <>
-        <h1 className="text-xl text-gray-100 font-semibold">Just a demo</h1>
+        {/* <h1 className="text-xl text-slate-300 font-semibold">(Just a demo)</h1> */}
         <table className="bg-white border border-gray-300 shadow-md "> 
             <thead>
                 {/* for the header */}
-                <tr className="text-left text-sm font-semibold bg-gray-100 p-10">
+                <tr className="text-left text-sm font-semibold bg-white p-10">
                     {headers.map((header, index)=>(
                         <th key={index}
                             className="px-10 py-1 border border-gray-300">
@@ -19,7 +19,7 @@ const Table = (({headers, data})=>{
                 {/* for the body */}
                 {data.map((row,rowIndex)=>(
                     <tr key={rowIndex}
-                        className="`${rowIndex%2===0 ? 'bg-gray-100': 'bg-white'}`"> 
+                    className={rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}> 
                         {/* the style for alt rows is not working */}
                         {headers.map((col, colIndex)=>(
                             <td key={colIndex}

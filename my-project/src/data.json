@@ -1,0 +1,20 @@
+{
+ "pageOne":{
+    "headerData":["Company", "Contact", "Country"],
+    "dataInfo": [
+        {
+            "Company":"ABC.co",
+            "Contact":"Smitha Jones",
+            "Country":"Australia"
+        },
+        {
+            "Company":"AlphaGamma",
+            "Contact":"Indiana Thomas",
+            "Country":"Germany"
+        },
+        {
+            
+        }
+    ]
+ }
+}
