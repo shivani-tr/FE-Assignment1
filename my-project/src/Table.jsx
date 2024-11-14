@@ -36,3 +36,8 @@ const Table = (({headers, data})=>{
 })
 
 export default Table
+
+Table.propTypes = {
+    headers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired
+}
