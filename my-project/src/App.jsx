@@ -11,6 +11,9 @@ function App() {
     { Company: 'Alfedro Fransis', Contact: 'Maria Jones', Country: 'USA' },
     { Company: 'Smith and co', Contact: 'Shawn Trevor', Country: 'Canada' },
     { Company: 'Green olives', Contact: 'Ben Illinois', Country: 'UK' },
+    { Company: 'Alfedro Fransis', Contact: 'Maria Jones', Country: 'USA' },
+    { Company: 'Smith and co', Contact: 'Shawn Trevor', Country: 'Canada' },
+    { Company: 'Green olives', Contact: 'Ben Illinois', Country: 'UK' },
   ]
 
 
