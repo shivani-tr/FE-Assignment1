@@ -1,2 +1,2 @@
-# FE-Assignment1
-Deployed link : https://shivani-assignment1.netlify.app 
+# FE-Assignments
+Assignment-1 : https://shivani-assignment1.netlify.app 
