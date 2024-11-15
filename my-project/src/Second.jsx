@@ -19,7 +19,7 @@ const Second = () => {
     //using contextAPI
     const {pageTwoData} = useDataContext();  //obj destructuring to specifically access pageTwoData
     const headerData = pageTwoData.headerData;
-    const dataInfo = pageTwoData.dataInfo
+    const dataInfo = pageTwoData.dataInfo;
 
     return(
         <>
