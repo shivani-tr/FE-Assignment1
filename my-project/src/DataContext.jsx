@@ -9,7 +9,7 @@ export const DataProvider = ({ children }) => {
   const pageTwoData = dataInfo.pageTwo;
 
   return (
-    <DataContext.Provider value={{ pageOneData, pageTwoData }}>
+    <DataContext.Provider value={{ pageOneData, pageTwoData }}>    {/* Provider component, tells what data can be accessed */}
       {children}         {/* the wrapped components that can access data */}
     </DataContext.Provider>
   );

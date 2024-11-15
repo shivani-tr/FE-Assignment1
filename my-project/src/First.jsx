@@ -18,7 +18,8 @@ const First=()=>{
 
     // using contextAPI 
     const { pageOneData } = useDataContext();
-    const { headerData, dataInfo } = pageOneData;
+    const headerData = pageOneData.headerData;
+    const dataInfo = pageOneData.dataInfo;
   
     return (
       <>
