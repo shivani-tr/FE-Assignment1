@@ -1,12 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-const LosersTable = () => {
-  const { topLosers, loading, error } = useSelector((state) => state.stocks);  
+const LosersTable = ({ losers }) => { // Accept `losers` prop here
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!topLosers || topLosers.length === 0) return <p>No data available</p>;  
+  if (!losers || losers.length === 0) return <p>No data available</p>;
 
   return (
     <table>
@@ -19,7 +15,7 @@ const LosersTable = () => {
         </tr>
       </thead>
       <tbody>
-        {topLosers.map((loser) => (
+        {losers.map((loser) => (
           <tr key={loser.ticker}>
             <td>{loser.ticker}</td>
             <td>${loser.price}</td> 

@@ -6,15 +6,12 @@ import LosersTable from './LosersTable';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-
   const { gainers, losers, loading, error } = useSelector((state) => state.stocks);
 
   useEffect(() => {
-
     dispatch(getTopGainersLosers());
   }, [dispatch]);
 
-  
   if (loading) return <p>Loading stock data...</p>;
   if (error) return <p>Error fetching data: {error}</p>;
 
