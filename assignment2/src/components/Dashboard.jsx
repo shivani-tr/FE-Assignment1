@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopGainersLosers } from '../redux/slice/stocks.js'; 
-import { useGainers, useLosers, useLoading, useError } from '../hooks/UseSelectorStocks.js';
+import { gainersSelector, losersSelector } from '../selectors/StocksSelectors.js';
 import GainersTable from './GainersTable';
 import LosersTable from './LosersTable';
 import data from '../data/demo.json'; // for my own demo data
@@ -9,10 +9,9 @@ import data from '../data/demo.json'; // for my own demo data
 const Dashboard = () => {
   const dispatch = useDispatch();
   // const { gainers, losers, loading, error } = useSelector((state) => state.stocks);
-  const gainers = useGainers();
-  const losers = useLosers();
-  const loading = useLoading();
-  const error = useError();
+  const gainers = useSelector(gainersSelector);
+  const losers = useSelector(losersSelector);
+
 
   useEffect(() => {
     dispatch(getTopGainersLosers());
