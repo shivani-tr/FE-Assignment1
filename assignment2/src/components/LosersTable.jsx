@@ -5,13 +5,13 @@ const LosersTable = ({ losers }) => {
   if (!losers || losers.length === 0) return <p>No data available</p>;
 
   return (
-    <table className='h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100 p-40 table-auto'>
+    <table className='h-full w-full bg-gray-700 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-300 p-40 table-auto'>
       <thead className='py-3 px-3'>
-        <tr className='text-left text-sm font-semibold p-10'>
-          <th>Ticker</th>
-          <th>Price</th>
-          <th>Change Amount</th>
-          <th>Change Percentage</th>
+        <tr className='text-center text-sm text-black/70 font-semibold p-10'>
+          <th className='py-4 px-3 border border-gray-300'>Ticker</th>
+          <th className='py-4 px-3 border border-gray-300'>Price</th>
+          <th className='py-4 px-3 border border-gray-300'>Change Amount</th>
+          <th className='py-4 px-3 border border-gray-300'>Change Percentage</th>
         </tr>
       </thead>
       <tbody>
