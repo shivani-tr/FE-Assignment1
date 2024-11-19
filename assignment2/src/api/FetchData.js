@@ -12,14 +12,14 @@ export const fetchTopGainersLosers = async () => {
       }
     });
     console.log(response.data); 
-    const { metadata, last_updated, top_gainers, top_losers, most_actively_traded } = response.data;
+    const { metadata,  top_gainers, top_losers} = response.data;
 
     return {
       metadata,
-      lastUpdated: last_updated,
+     
       topGainers: top_gainers,
       topLosers: top_losers,
-      mostActivelyTraded: most_actively_traded
+      
     };
   } catch (error) {
     console.error('Error fetching data:', error);

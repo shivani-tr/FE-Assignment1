@@ -1,38 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchTopGainersLosers } from '../../api/FetchData.js'; 
+import { fetchTopGainersLosers } from '../../api/FetchData.js';
 
-export const getTopGainersLosers = createAsyncThunk('stocks/getTopGainersLosers', async () => {
-  const data = await fetchTopGainersLosers();
-  return data; 
+export const getTopGainersLosers = createAsyncThunk('stocks/getTopGainersLosers', async (_, { dispatch }) => {
+  // Set loading state before the async call
+  dispatch(setLoadingState(true));
+
+  try {
+    const data = await fetchTopGainersLosers();
+    dispatch(setTopGainersLosers(data)); 
+  } catch (error) {
+    dispatch(setError(error)); 
+  } finally {
+    dispatch(setLoadingState(false));
+  }
 });
 
 const initialState = {
   gainers: [],
   losers: [],
   loading: false,
-  error: null
+  error: null,
 };
-
 
 const stocksSlice = createSlice({
   name: 'stocks',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(getTopGainersLosers.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getTopGainersLosers.fulfilled, (state, action) => {
-        state.loading = false;
-        state.gainers = action.payload.topGainers;
-        state.losers = action.payload.topLosers;
-      })
-      .addCase(getTopGainersLosers.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
-  }
+  reducers: {
+    setLoadingState: (state, action) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload; 
+    },
+    setTopGainersLosers: (state, action) => {
+      state.gainers = action.payload.topGainers;
+      state.losers = action.payload.topLosers;
+    },
+  },
 });
 
+export const { setError, setLoadingState, setTopGainersLosers } = stocksSlice.actions;
 export default stocksSlice.reducer;
