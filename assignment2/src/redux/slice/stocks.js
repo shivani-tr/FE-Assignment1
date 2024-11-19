@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchTopGainersLosers } from '../../api/FetchData.js';
 
 export const getTopGainersLosers = createAsyncThunk('stocks/getTopGainersLosers', async (_, { dispatch }) => {
-  // Set loading state before the async call
+  
   dispatch(setLoadingState(true));
 
   try {
