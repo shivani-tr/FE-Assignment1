@@ -25,11 +25,11 @@ const Dashboard = () => {
     <div className='flex justify-between items-center '>
      <div className='flex flex-col justify-center items-center mr-10'>
         <h2 className='text-3xl font-semi-bold text-lime-600 mb-7'>Top Gainers</h2>
-        <GainersTable gainers={gainers} />   {/* gainers = {gainers}*/}
+        <GainersTable gainers={data.top_gainers} />   {/* gainers = {gainers}*/}
      </div>
      <div className='flex flex-col justify-center items-center ml-10'>
         <h2 className='text-3xl font-semi-bold text-red-700 mb-7'>Top Losers</h2>
-        <LosersTable losers={losers} />  {/* losers = {data.top_losers}*/}
+        <LosersTable losers={data.top_losers} />  {/* losers = {data.top_losers}*/}
      </div> 
     </div>
   );
