@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
+import CompanyOverview from './pages/CompanyOverview.jsx'
 import Landing from './components/Landing.jsx'
-import Dashboard from './components/Dashboard.jsx'
+import { store } from './store/store.js'
+import { Provider } from 'react-redux'
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
-      <Landing/>
-    </>
+    <Provider store={store}>
+      <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/company/:ticker" element={<CompanyOverview />} />
+      </Routes>
+    </Router>
+    </Provider>
   )
 }
 

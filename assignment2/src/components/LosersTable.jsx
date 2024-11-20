@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LosersTable = ({ losers }) => { 
 
@@ -17,7 +18,9 @@ const LosersTable = ({ losers }) => {
       <tbody>
         {losers.slice(0,10).map((loser) => (
           <tr key={loser.ticker}>
-            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700'>{loser.ticker}</td>
+            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700'>
+              <Link to={`/company/${loser.ticker}`}>{loser.ticker}</Link>
+            </td>
             <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700'>${loser.price}</td> 
             <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700'>{loser.change_amount}</td>
             <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-gray-700'>{loser.change_percentage}</td>
