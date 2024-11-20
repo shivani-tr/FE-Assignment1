@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTopGainersLosers } from '../redux/slice/stocks.js'; 
+import { getTopGainersLosers } from '../store/reducers/stocks.js'; 
+import { gainersSelector, losersSelector, loadingSelector, errorSelector } from '../store/selectors/StocksSelectors.js';
 import GainersTable from './GainersTable';
 import LosersTable from './LosersTable';
 import data from '../data/demo.json'; // for my own demo data
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { gainers, losers, loading, error } = useSelector((state) => state.stocks);
+  // const { gainers, losers, loading, error } = useSelector((state) => state.stocks);
+  const gainers = useSelector(gainersSelector);
+  const losers = useSelector(losersSelector);
+  const loading = useSelector(loadingSelector);
+  const error = useSelector(errorSelector);
 
   useEffect(() => {
     dispatch(getTopGainersLosers());
-  }, [dispatch]);
+  }, []);
 
   if (loading) return <p>Loading stock data...</p>;
   if (error) return <p>Error fetching data: {error}</p>;
@@ -24,7 +29,7 @@ const Dashboard = () => {
      </div>
      <div className='flex flex-col justify-center items-center ml-10'>
         <h2 className='text-3xl font-semi-bold text-red-700 mb-7'>Top Losers</h2>
-        <LosersTable losers={data.top_losers} />  {/* losers = {losers}*/}
+        <LosersTable losers={data.top_losers} />  {/* losers = {data.top_losers}*/}
      </div> 
     </div>
   );
