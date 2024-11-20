@@ -11,3 +11,13 @@ export const losersSelector = createSelector(
     gainersLosersStore,
     (stocksSlice) => stocksSlice.losers
 );
+
+export const loadingSelector = createSelector(
+    gainersLosersStore, 
+    (stocksSlice) => stocksSlice.loading
+)
+
+export const errorSelector = createSelector(
+    gainersLosersStore, 
+    (stocksSlice) => stocksSlice.error
+)
