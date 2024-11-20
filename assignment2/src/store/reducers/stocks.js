@@ -3,16 +3,11 @@ import { fetchTopGainersLosers } from '../../api/FetchData.js';
 
 export const getTopGainersLosers = createAsyncThunk('stocks/getTopGainersLosers', async (_, { dispatch }) => {
   
-  dispatch(setLoadingState(true));
-
-  try {
+    dispatch(setLoadingState(true));
     const data = await fetchTopGainersLosers();
     dispatch(setTopGainersLosers(data)); 
-  } catch (error) {
-    dispatch(setError(error)); 
-  } finally {
     dispatch(setLoadingState(false));
-  }
+  
 });
 
 const initialState = {
