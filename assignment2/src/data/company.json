@@ -1,0 +1,72 @@
+[
+    {
+        "Name": "Ares Management Corporation",
+        "Description": "Ares Management Corporation is a global alternative investment manager specializing in private equity, real estate, and credit. Ares manages capital for institutional and individual investors and focuses on delivering superior risk-adjusted returns. The company has a diverse range of investment strategies across credit, private equity, real estate, and direct lending.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "FINANCIAL SERVICES"
+    },
+    {
+        "Name": "MSS Acquisition Corp.",
+        "Description": "MSS Acquisition Corp. is a special purpose acquisition company (SPAC) focused on identifying and completing a merger or acquisition with a business in the technology, media, or telecommunications sectors. The company is listed on the NASDAQ and is designed to create value for shareholders through strategic acquisitions.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "SPAC (Special Purpose Acquisition Company)"
+    },
+    {
+        "Name": "Cerro Grande Mining Corporation",
+        "Description": "Cerro Grande Mining Corporation is a Canadian-based mining company focused on gold and copper exploration and development in Chile. The company owns the flagship Pimenton project, which is situated in a region known for rich mineral deposits. Cerro Grande is engaged in mining exploration, with an emphasis on expanding its resource base.",
+        "Exchange": "TSX",
+        "Country": "Canada",
+        "Industry": "MINING"
+    },
+    {
+        "Name": "Outsiders Inc.",
+        "Description": "Outsiders Inc. is a technology company focusing on the development of advanced software solutions for enterprises in the logistics and supply chain industry. Outsiders Inc. is dedicated to leveraging big data and AI to optimize business operations and reduce inefficiencies in the supply chain process.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "SOFTWARE & TECHNOLOGY"
+    },
+    {
+        "Name": "Hub Cybersecurity",
+        "Description": "Hub Cybersecurity is a cybersecurity company that offers state-of-the-art solutions to protect businesses against online threats. The company specializes in threat detection, risk management, and data protection for industries that require secure digital environments.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "CYBERSECURITY"
+    },
+    {
+        "Name": "PetroWorld Inc.",
+        "Description": "PetroWorld Inc. is an energy company engaged in the exploration, production, and distribution of oil and natural gas. The company operates in several oil-rich regions around the world, focusing on sustainable and innovative energy solutions for the global market.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "ENERGY"
+    },
+    {
+        "Name": "Global Bioenergy Inc.",
+        "Description": "Global Bioenergy Inc. is an alternative energy company that specializes in the development and production of renewable energy solutions using organic waste materials. The company is committed to reducing global carbon emissions by converting biomass into biofuels and sustainable energy.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "RENEWABLE ENERGY"
+    },
+    {
+        "Name": "Celular Wireless Communications",
+        "Description": "Celular Wireless Communications is a telecommunications company that provides cellular and broadband services to urban and rural customers. The company focuses on expanding mobile connectivity in underserved regions and offering competitive pricing and coverage.",
+        "Exchange": "NASDAQ",
+        "Country": "Mexico",
+        "Industry": "TELECOMMUNICATIONS"
+    },
+    {
+        "Name": "LifeWrap Technologies",
+        "Description": "LifeWrap Technologies is a leading provider of wearable health technology, specializing in innovative products designed to monitor heart health and overall wellness. The company is dedicated to improving the quality of life by offering affordable and effective health solutions.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "HEALTHCARE TECHNOLOGY"
+    },
+    {
+        "Name": "Bloom Energy Corporation",
+        "Description": "Bloom Energy Corporation is an American company that designs, manufactures, and sells solid oxide fuel cells. Bloom Energy provides clean, reliable energy through its innovative fuel cell technology, which operates on natural gas or biogas. The company focuses on reducing carbon emissions by offering a sustainable alternative to traditional energy sources. Bloom Energy serves various industries, including commercial, industrial, and utility sectors, with its Energy Servers providing on-site power generation.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "CLEAN ENERGY"
+    }
+]
