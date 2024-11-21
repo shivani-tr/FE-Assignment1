@@ -18,7 +18,7 @@ const Table = ({ stockData }) => {
         {stockData.slice(0,10).map((data) => (
           <tr key={data.ticker}>
             {header.map((rowData)=>(
-              <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>
+              <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50 ease-in-out duration-300 hover:font-bold hover:text-indigo-700/50'>
                <Link to={`/company/${data.ticker}`}>{data[rowData]}</Link> 
               </td>
             ))}
