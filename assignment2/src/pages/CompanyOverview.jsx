@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanyOverview, fetchIncomeStatement } from '../store/reducers/companySlice';
 import { useParams } from 'react-router-dom';
 import IncomeChart from '../components/IncomeChart'; 
+import companyData from '../data/company.json';
+import incomeData from '../data/income.json';
 
 const CompanyOverview = () => {
   const dispatch = useDispatch();
@@ -20,29 +22,35 @@ const CompanyOverview = () => {
     }
   }, [dispatch, ticker]);
 
+  const company = companyData[0];  //just for my demo data
+  const income = incomeData[0]; // judt for my own demo data
+
   return (
-    <div>
-      <h1>Company Overview for {ticker} </h1>
+    <div className='text-left'>
+      <h1 className='text-2xl text-black/70 font-bold mb-3 mt-4'>Company Overview for :  </h1>    {/*{ticker} */}
 
      
-      {companyOverview && Object.keys(companyOverview).length > 0 ? (
+      {company && Object.keys(company).length > 0 ? (
         <div>
-          <h2>{companyOverview.Name}</h2>
-          <p><strong>Description:</strong> {companyOverview.Description}</p>
-          <p><strong>Exchange:</strong> {companyOverview.Exchange}</p>
-          <p><strong>Country:</strong> {companyOverview.Country}</p>
-          <p><strong>Industry:</strong> {companyOverview.Industry}</p>
+          <h2 className='text-5xl text-indigo-700 text-bold mt-1 mb-2'>{company.Name}</h2>
+          <p className='text-lg font-semi-bold text-black/50'><span className='text-lg font-bold text-black/70'>Description:</span> {company.Description}</p>            {/* {companyOverview.Description} */}
+          <p className='text-lg font-bold text-red-700/70'><span className='text-lg font-bold text-black/70'>Exchange:</span> {company.Exchange}</p>
+          <p className='text-lg font-bold text-blue-700/70'><span className='text-lg font-bold text-black/70'>Country:</span> {company.Country}</p>
+          <p className='text-lg font-bold text-green-700/70'><span className='text-lg font-bold text-black/70'>Industry:</span> {company.Industry}</p>
         </div>
       ) : (
         <p>Loading company details...</p>
       )}
 
-     
+{/*      // redux slice
       {incomeStatement && incomeStatement.annualReports ? (
-        <IncomeChart incomeStatement={incomeStatement} />
+        <IncomeChart incomeStatement={incomeStatement} />    
       ) : (
         <p>Loading income statement...</p>
-      )}
+      )} */}
+
+      {/* fetching data from my own income.json */}
+      <IncomeChart incomeStatement={income} />
     </div>
   );
 };
