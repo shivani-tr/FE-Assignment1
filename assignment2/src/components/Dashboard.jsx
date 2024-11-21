@@ -5,7 +5,6 @@ import { gainersSelector, losersSelector, loadingSelector, errorSelector } from 
 import Table from './Table.jsx';
 import GainersTable from './GainersTable';
 import LosersTable from './LosersTable';
-import Table from './Table.jsx';
 import data from '../data/demo.json'; // for my own demo data
 
 const Dashboard = () => {
