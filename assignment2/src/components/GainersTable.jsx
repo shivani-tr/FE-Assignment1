@@ -1,5 +1,10 @@
 import React from 'react';
+
 import {headerData} from "../data/demo.json"
+
+import { Link } from 'react-router-dom';
+
+
 const GainersTable = ({ gainers }) => { 
 
 
@@ -19,10 +24,19 @@ const GainersTable = ({ gainers }) => {
       <tbody>
         {gainers.slice(0,10).map((gainer) => (
           <tr key={gainer.ticker}>
+
             { headerData.map((header) => (
               <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>{gainer[header]}</td>
             ))
             }
+
+            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>
+              <Link to={`/company/${gainer.ticker}`}>{gainer.ticker}</Link>
+            </td>
+            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>${gainer.price}</td> 
+            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>{gainer.change_amount}</td>
+            <td className='text-left text-xs font-medium py-1 px-10 border border-gray-300 text-black/50'>{gainer.change_percentage}</td>
+
           </tr>
         ))}
       </tbody>
