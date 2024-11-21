@@ -1,7 +1,9 @@
 {
     "metadata": "Top gainers, losers, and most actively traded US tickers",
     "last_updated": "2024-11-15 16:15:58 US/Eastern",
+
     "header":["ticker", "price","change_amount", "change_percentage"] ,
+
     "top_gainers": [
         {
             "ticker": "AREN",

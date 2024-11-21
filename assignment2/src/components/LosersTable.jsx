@@ -1,5 +1,9 @@
 import React from 'react';
+
+import {headerData} from '../data/demo.json';
+
 import { Link } from 'react-router-dom';
+
 
 const LosersTable = ({ losers }) => { 
 
