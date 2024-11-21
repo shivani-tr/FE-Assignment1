@@ -55,3 +55,6 @@ export const fetchIncomeStatement = (ticker) => async (dispatch) => {
 
 export const { setCompanyOverview, setIncomeStatement } = companySlice.actions;
 export default companySlice.reducer;
+
+
+//reducers for company overview and income statement

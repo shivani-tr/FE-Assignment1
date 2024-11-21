@@ -5,5 +5,13 @@
         "Exchange": "NYSE",
         "Country": "USA",
         "Industry": "FINANCIAL SERVICES"
+    },
+    {
+        "Name": "Ares Management Corporation",
+        "Description": "Ares Management Corporation is a global alternative investment manager specializing in private equity, real estate, and credit. Ares manages capital for institutional and individual investors and focuses on delivering superior risk-adjusted returns. The company has a diverse range of investment strategies across credit, private equity, real estate, and direct lending.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "FINANCIAL SERVICES"
     }
 ]
+

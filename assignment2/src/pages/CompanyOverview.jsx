@@ -56,3 +56,6 @@ const CompanyOverview = () => {
 };
 
 export default CompanyOverview;
+
+
+//CompanyOverview page that is opened when you click on a company in the dashboard, it uses income-bar chart componnet
