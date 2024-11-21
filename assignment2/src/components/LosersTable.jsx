@@ -1,4 +1,5 @@
 import React from 'react';
+import {headerData} from '../data/demo.json';
 
 const LosersTable = ({ losers }) => { 
 
