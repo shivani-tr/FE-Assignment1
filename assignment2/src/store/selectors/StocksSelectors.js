@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 export const gainersLosersStore = (store) => store.stocks;
+export const companyIncome = (store) => store.company;
 
 export const gainersSelector = createSelector(
     gainersLosersStore,
@@ -23,12 +24,12 @@ export const errorSelector = createSelector(
 )
 
 export const companySelector = createSelector(
-    gainersLosersStore, 
+    companyIncome, 
     (companySlice) => companySlice.companyOverview
 )
 
 export const incomeSelector = createSelector(
-    gainersLosersStore, 
+    companyIncome, 
     (companySlice) => companySlice.incomeStatement
 )
 
