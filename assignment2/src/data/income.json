@@ -1,10 +1,47 @@
 [
-    {
-        "fiscalDateEnding": "2023-12-31",
-        "totalRevenue": "61860000000"
-    },
-    {
-        "fiscalDateEnding": "2023-12-31",
-        "totalRevenue": "61860000000"
-    }
-]
+        {
+            "fiscalDateEnding": "2023-12-31",
+            "totalRevenue": "61860000000"
+        },
+        {
+            "fiscalDateEnding": "2023-12-31",
+            "totalRevenue": "61860000000"
+        },
+        {
+            "fiscalDateEnding": "2023-09-30",
+            "totalRevenue": "61240000000"
+        },
+        {
+            "fiscalDateEnding": "2023-06-30",
+            "totalRevenue": "60520000000"
+        },
+        {
+            "fiscalDateEnding": "2023-03-31",
+            "totalRevenue": "59800000000"
+        },
+        {
+            "fiscalDateEnding": "2022-12-31",
+            "totalRevenue": "59080000000"
+        },
+        {
+            "fiscalDateEnding": "2022-09-30",
+            "totalRevenue": "58360000000"
+        },
+        {
+            "fiscalDateEnding": "2022-06-30",
+            "totalRevenue": "57640000000"
+        },
+        {
+            "fiscalDateEnding": "2022-03-31",
+            "totalRevenue": "56920000000"
+        },
+        {
+            "fiscalDateEnding": "2021-12-31",
+            "totalRevenue": "56200000000"
+        },
+        {
+            "fiscalDateEnding": "2021-09-30",
+            "totalRevenue": "55480000000"
+        }
+    ]
+    
