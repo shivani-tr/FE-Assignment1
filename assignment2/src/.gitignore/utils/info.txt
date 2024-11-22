@@ -1,4 +1,0 @@
-API KEY : 2C6OY9BE9JUGE5CH
-var url = 'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=2C6OY9BE9JUGE5CH';
-function=TOP_GAINERS_LOSERS
-
