@@ -24,11 +24,11 @@ const Dashboard = () => {
     <div className='flex justify-between items-center '>
      <div className='flex flex-col justify-center items-center mr-10'>
         <h2 className='text-3xl font-semi-bold text-lime-600 mb-7'>Top Gainers</h2>
-        <Table stockData={data.top_gainers} />   {/* gainers = {gainers}*/}
+        <Table stockData={data.top_gainers} />   {/* stocksData = {gainers}*/}
      </div>
      <div className='flex flex-col justify-center items-center ml-10'>
         <h2 className='text-3xl font-semi-bold text-red-700 mb-7'>Top Losers</h2>
-        <Table stockData={data.top_losers} />  {/* losers = {data.top_losers}*/}
+        <Table stockData={data.top_losers} />  {/* stocksData = {losers}*/}
      </div> 
     </div>
   );

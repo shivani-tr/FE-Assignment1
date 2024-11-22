@@ -31,7 +31,7 @@ const CompanyOverview = () => {
 
      
       {company && Object.keys(company).length > 0 ? (
-        <div>
+        <div className='p-10 border border-gray-500/50 rounded-lg drop-shadow-md'>
           <h2 className='text-5xl text-indigo-700 text-bold mt-1 mb-2'>{company.Name}</h2>
           <p className='text-lg font-semi-bold text-black/50'><span className='text-lg font-bold text-black/70'>Description:</span> {company.Description}</p>            {/* {companyOverview.Description} */}
           <p className='text-lg font-bold text-red-700/70'><span className='text-lg font-bold text-black/70'>Exchange:</span> {company.Exchange}</p>
