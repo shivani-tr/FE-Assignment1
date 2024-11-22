@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopGainersLosers } from '../store/reducers/stocks.js'; 
 import { gainersSelector, losersSelector, loadingSelector, errorSelector } from '../store/selectors/StocksSelectors.js';
-import Table from './Table.jsx';
+import Table from './core/Table.jsx';
 import data from '../data/demo.json'; // for my own demo data
 
 const Dashboard = () => {

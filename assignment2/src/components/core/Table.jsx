@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {header} from '../data/demo.json';
+import {header} from '../../data/demo.json';
 const Table = ({ stockData }) => { 
 
   if (!stockData|| stockData.length === 0) return <p>No data available</p>;  
