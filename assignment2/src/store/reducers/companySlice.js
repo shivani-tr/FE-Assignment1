@@ -26,7 +26,7 @@ export const fetchCompanyOverview = (ticker) => async (dispatch) => {
       params: {
         function: 'OVERVIEW',
         symbol: ticker,
-        apikey: process.env.REACT_APP_API_KEY,
+        apikey: process.env.VITE_API_KEY,
       },
     });
     dispatch(setCompanyOverview(response.data)); 
@@ -41,7 +41,7 @@ export const fetchIncomeStatement = (ticker) => async (dispatch) => {
       params: {
         function: 'INCOME_STATEMENT',
         symbol: ticker,
-        apikey: process.env.REACT_APP_API_KEY,
+        apikey: process.env.VITE_API_KEY,
       },
     });
     dispatch(setIncomeStatement(response.data)); 
