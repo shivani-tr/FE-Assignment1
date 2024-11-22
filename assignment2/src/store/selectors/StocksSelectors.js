@@ -21,3 +21,17 @@ export const errorSelector = createSelector(
     gainersLosersStore, 
     (stocksSlice) => stocksSlice.error
 )
+
+export const companySelector = createSelector(
+    gainersLosersStore, 
+    (companySlice) => companySlice.companyOverview
+)
+
+export const incomeSelector = createSelector(
+    gainersLosersStore, 
+    (companySlice) => companySlice.incomeStatement
+)
+
+
+// const companyOverview = useSelector((state) => state.company.companyOverview);
+// const incomeStatement = useSelector((state) => state.company.incomeStatement);

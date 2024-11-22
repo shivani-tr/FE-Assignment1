@@ -5,14 +5,18 @@ import { useParams } from 'react-router-dom';
 import IncomeChart from '../components/IncomeChart'; 
 import companyData from '../data/company.json';
 import incomeData from '../data/income.json';
+import { companySelector, incomeSelector } from '../store/selectors/StocksSelectors';
 
 const CompanyOverview = () => {
   const dispatch = useDispatch();
   const { ticker } = useParams();
 
  
-  const companyOverview = useSelector((state) => state.company.companyOverview);
-  const incomeStatement = useSelector((state) => state.company.incomeStatement);
+  // const companyOverview = useSelector((state) => state.company.companyOverview);
+  // const incomeStatement = useSelector((state) => state.company.incomeStatement);
+
+  const companyOverview = useSelector(companySelector);
+  const incomeStatement = useSelector(incomeSelector);
 
   
   useEffect(() => {
