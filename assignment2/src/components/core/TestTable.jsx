@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-const Table = (({headers, data})=>{
+const TestTable = (({headers, data})=>{
     return(
         <>
         {/* <h1 className="text-xl text-slate-300 font-semibold">(Just a demo)</h1> */}
-        <table className="bg-white border border-gray-300 shadow-md "> 
+        <table className="bg-white text-black/70 border border-gray-300 shadow-md "> 
             <thead>
                 {/* for the header */}
                 <tr className="text-left text-sm font-semibold bg-white p-10">
@@ -34,9 +34,9 @@ const Table = (({headers, data})=>{
     )
 })
 
-export default Table
+export default TestTable
 
-Table.propTypes = {
+TestTable.propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string).isRequired,
     data: PropTypes.arrayOf(PropTypes.object).isRequired
 }

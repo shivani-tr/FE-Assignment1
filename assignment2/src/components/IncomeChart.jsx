@@ -63,3 +63,6 @@ const IncomeChart = ({ incomeStatement }) => {
 };
 
 export default IncomeChart;
+
+
+//made a seperate component for Income statement- bar chart

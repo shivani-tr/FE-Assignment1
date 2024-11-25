@@ -26,7 +26,7 @@ export const fetchCompanyOverview = (ticker) => async (dispatch) => {
       params: {
         function: 'OVERVIEW',
         symbol: ticker,
-        apikey: 'C1LCXM862OHRC01U',
+        apikey: process.env.VITE_API_KEY,
       },
     });
     dispatch(setCompanyOverview(response.data)); 
@@ -41,7 +41,7 @@ export const fetchIncomeStatement = (ticker) => async (dispatch) => {
       params: {
         function: 'INCOME_STATEMENT',
         symbol: ticker,
-        apikey: 'C1LCXM862OHRC01U',
+        apikey: process.env.VITE_API_KEY,
       },
     });
     dispatch(setIncomeStatement(response.data)); 
@@ -55,3 +55,6 @@ export const fetchIncomeStatement = (ticker) => async (dispatch) => {
 
 export const { setCompanyOverview, setIncomeStatement } = companySlice.actions;
 export default companySlice.reducer;
+
+
+//reducers for company overview and income statement

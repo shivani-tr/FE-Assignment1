@@ -1,7 +1,104 @@
 [
     {
-        "Name": "Ares Management Corporation",
-        "Description": "Ares Management Corporation is a global alternative investment manager specializing in private equity, real estate, and credit. Ares manages capital for institutional and individual investors and focuses on delivering superior risk-adjusted returns. The company has a diverse range of investment strategies across credit, private equity, real estate, and direct lending.",
+        "Ticker": "AERN",
+        "Name": "Aern Global Services",
+        "Description": "Aern Global Services specializes in industrial solutions, providing technology and engineering services for various industries. Aern focuses on delivering innovative and sustainable industrial applications.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "INDUSTRIALS"
+    },
+    {
+        "Ticker": "MSSAW",
+        "Name": "Mesa Southwest Airlines",
+        "Description": "Mesa Southwest Airlines operates regional flights across the western United States, providing passenger and cargo services. The airline is known for its punctual service and affordable pricing.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "TRANSPORTATION"
+    },
+    {
+        "Ticker": "CEROW",
+        "Name": "Cero Innovations",
+        "Description": "Cero Innovations develops cutting-edge clean energy solutions aimed at reducing carbon emissions. Cero's product line includes solar panels, wind turbines, and energy storage technologies.",
+        "Exchange": "OTC",
+        "Country": "USA",
+        "Industry": "RENEWABLE ENERGY"
+    },
+    {
+        "Ticker": "OUST+A",
+        "Name": "Ouster Advanced Technologies",
+        "Description": "Ouster Advanced Technologies designs high-resolution sensors for autonomous vehicles and robotics applications. Their sensors provide accurate 3D spatial data for safe and efficient navigation.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "TECHNOLOGY"
+    },
+    {
+        "Ticker": "HUBCZ",
+        "Name": "HubZone Technologies",
+        "Description": "HubZone Technologies delivers cloud computing and infrastructure services for enterprises. They focus on providing scalable and secure solutions for data storage, processing, and analysis.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "TECHNOLOGY"
+    },
+    {
+        "Ticker": "PETWW",
+        "Name": "Petro World Wide",
+        "Description": "Petro World Wide specializes in global energy solutions, particularly in oil and gas exploration and production. The company is committed to sustainable practices and reducing environmental impact.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "ENERGY"
+    },
+    {
+        "Ticker": "GBBKW",
+        "Name": "Global Blockchain Works",
+        "Description": "Global Blockchain Works develops and deploys blockchain solutions for financial institutions and government entities. They aim to enhance transparency, security, and efficiency in transactions.",
+        "Exchange": "OTC",
+        "Country": "USA",
+        "Industry": "TECHNOLOGY"
+    },
+    {
+        "Ticker": "CELUW",
+        "Name": "Celular United Wireless",
+        "Description": "Celular United Wireless offers nationwide wireless network services for both consumers and businesses. The company focuses on high-speed internet and enhanced connectivity solutions.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "TELECOMMUNICATIONS"
+    },
+    {
+        "Ticker": "HAIAW",
+        "Name": "Haier International",
+        "Description": "Haier International is a global leader in consumer electronics and home appliances, manufacturing products for home automation, smart appliances, and energy-efficient solutions.",
+        "Exchange": "NYSE",
+        "Country": "China",
+        "Industry": "CONSUMER ELECTRONICS"
+    },
+    {
+        "Ticker": "LIFWW",
+        "Name": "LifeWell Health Solutions",
+        "Description": "LifeWell Health Solutions provides healthcare and wellness products, including medical devices and supplements. The company prioritizes innovative health solutions and improved quality of life.",
+        "Exchange": "NASDAQ",
+        "Country": "USA",
+        "Industry": "HEALTHCARE"
+    },
+    {
+        "Ticker": "BE",
+        "Name": "Bloom Energy Corporation",
+        "Description": "Bloom Energy Corporation provides advanced fuel cell systems for clean and efficient power generation. Their solutions are used in industrial, commercial, and residential applications.",
+        "Exchange": "NYSE",
+        "Country": "USA",
+        "Industry": "RENEWABLE ENERGY"
+    },
+    {
+        "Ticker": "RVSNW",
+        "Name": "Raven Software Networks",
+        "Description": "Raven Software Networks develops cybersecurity solutions and network monitoring tools for corporate and government clients, focusing on threat detection and data protection.",
+        "Exchange": "OTC",
+        "Country": "USA",
+        "Industry": "CYBERSECURITY"
+    },
+    {
+        "Ticker": "ZOOZV",
+        "Name": "Zooz Ventures",
+        "Description": "Zooz Ventures is a venture capital firm that invests in early-stage technology startups. They focus on disruptive innovations in fintech, AI, and digital health industries.",
         "Exchange": "NYSE",
         "Country": "USA",
         "Industry": "FINANCIAL SERVICES"

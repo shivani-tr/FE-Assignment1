@@ -8,3 +8,5 @@ export const store = configureStore({
         company: companyReducer
     }
 });
+
+//added company reducer in the store

@@ -1,0 +1,67 @@
+{
+    "pageOne":{
+       "headerData":["Company", "Contact", "Country"],
+       "dataInfo": [
+           {
+               "Company":"ABC.co",
+               "Contact":"Smitha Jones",
+               "Country":"Australia"
+           },
+           {
+               "Company":"AlphaGamma",
+               "Contact":"Indiana Thomas",
+               "Country":"Germany"
+           },
+           {
+               "Company":"BetaSurance",
+               "Contact":"Alex Jamison",
+               "Country":"Japan"
+           },
+           {
+               "Company":"SigmaStores",
+               "Contact":"Dixit Kama",
+               "Country":"Indonesia"
+           },
+           {
+               "Company":"Medhavish",
+               "Contact":"SivediKa Ramanujan",
+               "Country":"Singapore"
+           },
+           {
+               "Company":"Boxtros",
+               "Contact":"Hilary",
+               "Country":"USA"
+           },
+           {
+               "Company":"AIgen Labs",
+               "Contact":"Isac Bellsmisth",
+               "Country":"India"
+           }
+       ]
+    },
+    "pageTwo":{
+       "headerData":["Company", "Contact", "Country"],
+       "dataInfo": [
+           {
+               "Company":"Baash.co",
+               "Contact":"Gung Jones",
+               "Country":"Australia"
+           },
+           {
+               "Company":"AlphaGamma",
+               "Contact":"Indiana Thomas",
+               "Country":"Germany"
+           },
+           {
+               "Company":"AIgen Labs",
+               "Contact":"Isac Bellsmisth",
+               "Country":"India"
+           },
+           {
+               "Company":"BetaSurance",
+               "Contact":"Alex Jamison",
+               "Country":"Japan"
+           }
+       ]
+    }
+   }
