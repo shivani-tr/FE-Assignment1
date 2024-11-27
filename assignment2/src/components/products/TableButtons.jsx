@@ -17,6 +17,7 @@ const TableButtons = () => {
   const selectedCategory = useSelector((state) => state.product.selectedCategory);
 
   const handleCategoryClick = (category) => {
+    debugger;
     dispatch(setSelectedCategory(category));
   };
 
