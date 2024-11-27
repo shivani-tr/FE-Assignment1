@@ -89,7 +89,7 @@ const productSlice = createSlice({
         incrementPage: (state) => {
             state.pagination.page += 1;
             state.pagination.skip = (state.pagination.page - 1) * state.pagination.limit;
-        },
+          },
         resetProducts: (state) => {
             state.products = [];
         },

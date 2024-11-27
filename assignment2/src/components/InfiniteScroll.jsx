@@ -12,6 +12,7 @@ const InfiniteScroll = ({ children }) => {
   const loadMore = useCallback(() => {
     if (!loading) {
       dispatch(incrementPage());
+      dispatch(fetchAllProducts()); // Fetch new products after increment
     }
   }, [dispatch, loading]);
 
@@ -21,6 +22,7 @@ const InfiniteScroll = ({ children }) => {
 
       if (observerRef.current) observerRef.current.disconnect();
       observerRef.current = new IntersectionObserver((entries) => {
+        console.log('Observer entries:', entries); // Debug observer
         if (entries[0].isIntersecting) {
           loadMore();
         }

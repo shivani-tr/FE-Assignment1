@@ -16,26 +16,34 @@ const Products = () => {
   const selectedCategory = useSelector(selectedCategorySelector);
   const products = useSelector(productsSelector);
   const loading = useSelector(loadingSelector);
-
   useEffect(() => {
-    dispatch(fetchCategories());
-
+    dispatch(fetchCategories()); 
+    // console.log(selectedCategory)
+  
     if (!selectedCategory) {
       dispatch(fetchAllProducts());
     } else {
       dispatch(fetchProductsByCategory(selectedCategory)); 
     }
-  }, [selectedCategory]);
+  }, [selectedCategory]); 
+  
 
   return (
     <>
       <h1 className="text-indigo-700 text-3xl font-bold">Product Page</h1>
       <div>
         <TableButtons />
-        <InfiniteScroll>
+              {selectedCategory ? (
+        <>
           <Table data={products} header={header} isLink={false} />
           {loading && <div className="text-center">Loading...</div>}
+        </>
+      ) : (
+        <InfiniteScroll>
+          <Table data={products} header={header} isLink={false} />
         </InfiniteScroll>
+      )}
+
       </div>
     </>
   );
