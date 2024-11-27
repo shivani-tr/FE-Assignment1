@@ -9,7 +9,7 @@ const Table = ({ data, header, isLink }) => {
       <thead>
         <tr className="text-left text-sm text-black/70 font-semibold">
           {header.map((headerItem) => (
-            <th key={headerItem} className="py-4 px-10 border border-gray-300 capitalize">
+            <th key={headerItem} className="py-4 px-7 border border-gray-300 capitalize">
               {headerItem}
             </th>
           ))}
@@ -20,7 +20,7 @@ const Table = ({ data, header, isLink }) => {
           isLink ? (
             <tr key={dataItem.ticker}>
               {header.map((headerItem) => (
-                <td key={`${dataItem.ticker}-${headerItem}`} className="text-left text-xs font-medium py-4 px-10 border border-gray-300 text-black/50">
+                <td key={`${dataItem.ticker}-${headerItem}`} className="text-left text-xs font-medium py-3 px-7 border border-gray-300 text-black/50">
                   <Link to={`/company/${dataItem.ticker}`}>{dataItem[headerItem]}</Link>
                 </td>
               ))}
