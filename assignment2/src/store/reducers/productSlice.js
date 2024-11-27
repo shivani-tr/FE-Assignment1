@@ -1,7 +1,7 @@
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Initial state
 const initialState = {
     products: [],
     categories: [],
@@ -10,6 +10,58 @@ const initialState = {
     loading: false,
     error: null,
 };
+
+
+
+// Fetch all products
+export const fetchAllProducts = createAsyncThunk(
+    'product/fetchAllProducts',
+    async (_, { dispatch, getState, rejectWithValue }) => {
+        const { limit, skip } = getState().product.pagination;
+        dispatch(setLoading(true)); 
+        try {
+            const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
+            dispatch(setProducts(response.data.products)); 
+        } catch (error) {
+            return rejectWithValue(error.message); 
+        } finally {
+            dispatch(setLoading(false)); 
+        }
+    }
+);
+
+// Fetch products by category
+export const fetchProductsByCategory = createAsyncThunk(
+    'product/fetchProductsByCategory',
+    async (category, { dispatch, getState, rejectWithValue }) => {
+        const { limit, skip } = getState().product.pagination;
+        dispatch(setLoading(true)); 
+        try {
+            const response = await axios.get(`https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`);
+            dispatch(setProducts(response.data.products)); 
+        } catch (error) {
+            return rejectWithValue(error.message); 
+        } finally {
+            dispatch(setLoading(false)); 
+        }
+    }
+);
+
+// Fetch categories
+export const fetchCategories = createAsyncThunk(
+    'product/fetchCategories',
+    async (_, { dispatch, rejectWithValue }) => {
+        dispatch(setLoading(true)); 
+        try {
+            const response = await axios.get(`https://dummyjson.com/products/categories`);
+            dispatch(setCategories(response.data.slice(0, 5))); 
+        } catch (error) {
+            return rejectWithValue(error.message); 
+        } finally {
+            dispatch(setLoading(false)); 
+        }
+    }
+);
 
 
 const productSlice = createSlice({
@@ -45,47 +97,6 @@ const productSlice = createSlice({
 });
 
 
-export const fetchAllProducts = () => async (dispatch, getState) => {
-    const { limit, skip } = getState().product.pagination;
-    dispatch(setLoading(true));
-
-    try {
-        const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
-        dispatch(setProducts(response.data.products));
-    } catch (error) {
-        dispatch(setError(error.message));
-    } finally {
-        dispatch(setLoading(false));
-    }
-};
-
-export const fetchProductsByCategory = (category) => async (dispatch, getState) => {
-    const { limit, skip } = getState().product.pagination;
-    dispatch(setLoading(true));
-
-    try {
-        const response = await axios.get(`https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`);
-        dispatch(setProducts(response.data.products));
-    } catch (error) {
-        dispatch(setError(error.message));
-    } finally {
-        dispatch(setLoading(false));
-    }
-};
-
-export const fetchCategories = () => async (dispatch) => {
-    dispatch(setLoading(true));
-
-    try {
-        const response = await axios.get(`https://dummyjson.com/products/categories`);
-        dispatch(setCategories(response.data.slice(0, 5))); 
-    } catch (error) {
-        dispatch(setError(error.message));
-    } finally {
-        dispatch(setLoading(false));
-    }
-};
-
-
 export const { setProducts, setCategories, setSelectedCategory, setLoading, setError, incrementPage, resetProducts } = productSlice.actions;
+
 export default productSlice.reducer;
