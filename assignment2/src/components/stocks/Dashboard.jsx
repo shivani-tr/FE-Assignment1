@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTopGainersLosers } from '../store/reducers/stocks.js'; 
-import { gainersSelector, losersSelector, loadingSelector, errorSelector } from '../store/selectors/StocksSelectors.js';
-import {header} from '../data/demo.json';
-import Table from './core/Table.jsx';
-import data from '../data/demo.json'; // for my own demo data
+import { getTopGainersLosers } from "../../store/reducers/stocks.js"; 
+import { gainersSelector, losersSelector, loadingSelector, errorSelector } from '../../store/selectors/StocksSelectors.js';
+import {header} from '../../data/demo.json';
+import Table from '../core/Table.jsx';
+import data from '../../data/demo.json'; // for my own demo data
 
 const Dashboard = () => {
   const dispatch = useDispatch();

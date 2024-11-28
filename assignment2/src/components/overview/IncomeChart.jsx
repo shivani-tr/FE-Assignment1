@@ -2,7 +2,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import data from '../data/income.json';
+import data from '../../data/income.json';
 
 
 const IncomeChart = ({ incomeStatement }) => {

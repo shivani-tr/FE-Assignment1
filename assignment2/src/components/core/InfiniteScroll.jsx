@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProducts, incrementPage } from "../store/reducers/productSlice.js";
+import { fetchAllProducts, incrementPage } from "../../store/reducers/productSlice.js";
 
 const InfiniteScroll = ({ children }) => {
   const dispatch = useDispatch();

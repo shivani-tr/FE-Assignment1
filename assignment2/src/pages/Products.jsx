@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { header } from "../data/product.json";
 import { useSelector, useDispatch } from "react-redux";
 import Table from "../components/core/Table.jsx";
-import InfiniteScroll from "../components/InfiniteScroll.jsx";
+import InfiniteScroll from "../components/core/InfiniteScroll.jsx";
 import { fetchAllProducts, fetchCategories, fetchProductsByCategory, setSelectedCategory } from "../store/reducers/productSlice.js";
 import { selectedCategorySelector, productsSelector, loadingSelector } from "../store/selectors/ProductsSelectors.js";
 import TableButtons from "../components/products/TableButtons.jsx";

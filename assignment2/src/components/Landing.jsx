@@ -1,6 +1,5 @@
 import React from "react";
-import Dashboard from "./Dashboard";
-import TestPage from "../pages/TestPage";
+import Dashboard from "../components/stocks/Dashboard.jsx";
 import { Link } from "react-router-dom";
 const Landing = () => {
     return(
@@ -16,9 +15,7 @@ const Landing = () => {
         <div className="mt-10 pt-10 pb-10">
             <Link to="/products"><button className="p-3 text-white font-semi-bold rounded-md bg-indigo-700" >Browse Products</button></Link>
         </div>
-        <div className="pt-1">
-            <Link to="/assignment1" className="text-black/50 font-bold">Go to Assignment-1 (Test table)</Link>    
-        </div>        
+                
         </div>
         </>
     );
