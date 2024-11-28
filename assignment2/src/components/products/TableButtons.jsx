@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedCategory, resetProducts } from "../../store/reducers/productSlice.js";
 import { GiLipstick, GiPerfumeBottle, GiSofa, GiBeachBag, GiCeilingLight, GiCogLock } from "react-icons/gi";
+
 
 const btnConfig = {
   beauty: { component: GiLipstick },
@@ -12,13 +14,17 @@ const btnConfig = {
 };
 
 const TableButtons = () => {
+  
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.product.categories);
   const selectedCategory = useSelector((state) => state.product.selectedCategory);
 
+  const navigate = useNavigate();
+
   const handleCategoryClick = (category) => {
     debugger;
     dispatch(setSelectedCategory(category));
+    navigate(`/products?category=${category}`)
   };
 
   const handleReset = () => {
@@ -36,7 +42,7 @@ const TableButtons = () => {
           <button
             key={category.slug}
             onClick={() => handleCategoryClick(category.slug)}
-            className={`px-4 py-2 m-2 rounded-md ${
+            className={`px-4 py-2 m-2 rounded-md hover:bg-indigo-300 ${
               selectedCategory === category.slug ? "bg-indigo-700 text-white" : "bg-[#D4D8E5]"
             }`}
           >
