@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanyOverview, fetchIncomeStatement } from '../store/reducers/companySlice';
 import { useParams } from 'react-router-dom';
-import IncomeChart from '../components/IncomeChart'; 
+import IncomeChart from '../components/overview/IncomeChart.jsx'; 
 import companyData from '../data/company.json';
 import incomeData from '../data/income.json';
 import { companySelector, incomeSelector } from '../store/selectors/StocksSelectors';
