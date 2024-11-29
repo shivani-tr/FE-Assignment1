@@ -1,4 +1,4 @@
-// src/store/index.js
+
 import { configureStore } from '@reduxjs/toolkit';
 import productReducer from './reducers/productSlice';
 import stocksReducer from './reducers/stocks';
