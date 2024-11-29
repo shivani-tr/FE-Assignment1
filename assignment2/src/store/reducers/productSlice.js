@@ -132,3 +132,5 @@ const productSlice = createSlice({
 export const { setProducts, setCategories, setSelectedCategory, setLoading, setError, incrementPage, resetProducts, setUpdatingProduct, updatingProductInState } = productSlice.actions;
 
 export default productSlice.reducer;
+
+
