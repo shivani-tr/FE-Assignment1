@@ -51,6 +51,12 @@ const TableButtons = () => {
       >
         Clear
       </button>
+      <button 
+        
+        className="px-4 py-2 m-2 rounded-md bg-lime-400 text-white"
+      >
+        Add
+      </button>
     </div>
   );
 };

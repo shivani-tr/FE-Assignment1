@@ -9,6 +9,7 @@ const initialState = {
     pagination: { limit: 15, skip: 0, page: 1 },
     loading: false,
     error: null,
+    updatingProduct : null //prefill
 };
 
 
@@ -63,6 +64,24 @@ export const fetchCategories = createAsyncThunk(
     }
 );
 
+// update products (put)
+export const updateProducts = createAsyncThunk(
+    'product/updateProducts',
+    async({productId, updatedData},{dispatch, rejectWithValue}) => {
+        dispatch(setLoading(true));
+        try{
+            const response = await axios.put(`https://dummyjson.com/products/${productId}`, updatedData)
+            return response.data
+        }
+        catch(error){
+            return rejectWithValue(error.message); 
+        }
+        finally{
+            dispatch(setLoading(false));
+        }
+    }
+)
+
 
 const productSlice = createSlice({
     name: 'product',
@@ -93,10 +112,23 @@ const productSlice = createSlice({
         resetProducts: (state) => {
             state.products = [];
         },
+
+        // for prefill
+        setUpdatingProduct: (state,action) => {
+            state.updatingProduct = action.payload;
+        },
+
+        //to replace updated product details in state
+        updatingProductInState: (state, action) => {
+            const updatedProduct = action.payload;
+            state.products = state.products.map((product)=>{
+                return product.id === updatedProduct.id ? updatedProduct : product 
+            })
+        }
     },
 });
 
 
-export const { setProducts, setCategories, setSelectedCategory, setLoading, setError, incrementPage, resetProducts } = productSlice.actions;
+export const { setProducts, setCategories, setSelectedCategory, setLoading, setError, incrementPage, resetProducts, setUpdatingProduct, updatingProductInState } = productSlice.actions;
 
 export default productSlice.reducer;
