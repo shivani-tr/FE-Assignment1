@@ -19,20 +19,19 @@ import TableButtons from "../components/products/TableButtons.jsx";
 
 const Products = () => {
   const dispatch = useDispatch();
-  
   const [searchParams, setSearchParams] = useSearchParams();
-  const category = searchParams.get('category'); // Get the category from URL
+  const category = searchParams.get("category");
 
+  const categories = useSelector((state) => state.product.categories);
   const selectedCategory = useSelector(selectedCategorySelector);
   const products = useSelector(productsSelector);
   const loading = useSelector(loadingSelector);
 
-  // when the component mounts
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
 
-  // Update state and fetch products when category changes
+  // when category changes
   useEffect(() => {
     if (category) {
       dispatch(setSelectedCategory(category));
@@ -43,16 +42,12 @@ const Products = () => {
     }
   }, [category]);
 
-  // Update URL query parameters dynamically based on selection
+ 
   const handleCategoryChange = (newCategory) => {
     if (newCategory) {
-      setSearchParams({ category: newCategory }); 
-      dispatch(setSelectedCategory(newCategory)); 
-      dispatch(fetchProductsByCategory(newCategory)); 
+      setSearchParams({ category: newCategory });
     } else {
       setSearchParams({}); 
-      dispatch(setSelectedCategory(null)); 
-      dispatch(fetchAllProducts()); 
     }
   };
 
@@ -60,7 +55,11 @@ const Products = () => {
     <>
       <h1 className="text-indigo-700 text-3xl font-bold">Product Page</h1>
       <div>
-        <TableButtons onCategoryChange={handleCategoryChange} />
+        <TableButtons
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+        />
         {selectedCategory ? (
           <>
             <Table data={products} header={header} isLink={false} />
