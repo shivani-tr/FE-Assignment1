@@ -14,7 +14,9 @@ const Table = ({ data, header, isLink, onEdit }) => {
               {headerItem}
             </th>
           ))}
-          <th className="py-4 px-7 border border-gray-300 capitalize">Edit</th>
+          {!isLink && (
+            <th className="py-4 px-7 border border-gray-300 capitalize">Edit</th>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -22,28 +24,36 @@ const Table = ({ data, header, isLink, onEdit }) => {
           isLink ? (
             <tr key={dataItem.ticker}>
               {header.map((headerItem) => (
-                <td key={`${dataItem.ticker}-${headerItem}`} className="text-left text-xs font-medium py-3 px-7 border border-gray-300 text-black/50">
-                  <Link to={`/company/${dataItem.ticker}`}>{dataItem[headerItem]}</Link>
+                <td
+                  key={`${dataItem.ticker}-${headerItem}`}
+                  className="text-left text-xs font-medium py-3 px-7 border border-gray-300 text-black/50"
+                >
+                  <Link to={`/company/${dataItem.ticker}`}>
+                    {dataItem[headerItem]}
+                  </Link>
                 </td>
               ))}
             </tr>
           ) : (
             <tr key={dataItem.id}>
               {header.map((headerItem) => (
-                <td key={`${dataItem.id}-${headerItem}`} className="text-left text-xs font-medium py-4 px-10 border border-gray-300 text-black/50">
+                <td
+                  key={`${dataItem.id}-${headerItem}`}
+                  className="text-left text-xs font-medium py-4 px-10 border border-gray-300 text-black/50"
+                >
                   {dataItem[headerItem]}
                 </td>
               ))}
               <td className="text-center py-4 px-7 border border-gray-300">
-              <button
-                onClick={() => onEdit(dataItem)} 
-                className="text-blue-500 hover:text-blue-700"
-              >
-                <Modal/> {/* clicking on this button should open the modal */}
-              </button>
-            </td>
+                <button
+                  onClick={() => onEdit(dataItem)} 
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  Edit
+                </button>
+                <Modal /> {/* Ensure Modal is configured properly */}
+              </td>
             </tr>
-          
           )
         )}
       </tbody>
