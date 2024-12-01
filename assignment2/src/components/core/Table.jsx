@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
-const Table = ({ data, header, isLink }) => {
+const Table = ({ data, header, isLink, onEdit }) => {
   if (!data || data.length === 0) return <p>No data available</p>;
 
   return (
@@ -13,6 +14,7 @@ const Table = ({ data, header, isLink }) => {
               {headerItem}
             </th>
           ))}
+          <th className="py-4 px-7 border border-gray-300 capitalize">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +34,16 @@ const Table = ({ data, header, isLink }) => {
                   {dataItem[headerItem]}
                 </td>
               ))}
+              <td className="text-center py-4 px-7 border border-gray-300">
+              <button
+                onClick={() => onEdit(dataItem)} 
+                className="text-blue-500 hover:text-blue-700"
+              >
+                <Modal/> {/* clicking on this button should open the modal */}
+              </button>
+            </td>
             </tr>
+          
           )
         )}
       </tbody>

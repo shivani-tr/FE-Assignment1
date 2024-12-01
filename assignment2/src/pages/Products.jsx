@@ -8,7 +8,8 @@ import {
   fetchAllProducts, 
   fetchCategories, 
   fetchProductsByCategory, 
-  setSelectedCategory 
+  setSelectedCategory,
+  setUpdatingProduct 
 } from "../store/reducers/productSlice.js";
 import { 
   selectedCategorySelector, 
@@ -51,6 +52,11 @@ const Products = () => {
     }
   };
 
+  //handling edit or product updates
+  const handleEdit = (product) => {
+    dispatch(setUpdatingProduct(product));
+  }
+
   return (
     <>
       <h1 className="text-indigo-700 text-3xl font-bold">Product Page</h1>
@@ -59,6 +65,7 @@ const Products = () => {
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
+          onEdit={handleEdit}
         />
         {selectedCategory ? (
           <>
@@ -67,7 +74,7 @@ const Products = () => {
           </>
         ) : (
           <InfiniteScroll>
-            <Table data={products} header={header} isLink={false} />
+            <Table data={products} header={header} isLink={false} onEdit={handleEdit} />
           </InfiniteScroll>
         )}
       </div>
