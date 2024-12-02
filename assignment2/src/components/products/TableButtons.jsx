@@ -11,7 +11,7 @@ const btnConfig = {
   "home-decoration": { component: GiCeilingLight },
 };
 
-const TableButtons = ({categories, selectedCategory, onCategoryChange}) => {
+const TableButtons = ({categories, selectedCategory, onCategoryChange,  onAddProduct}) => {
   return (
     <div className="flex justify-start items-center">
       {categories.slice(0, 5).map((category) => {
@@ -38,7 +38,7 @@ const TableButtons = ({categories, selectedCategory, onCategoryChange}) => {
         Clear
       </button>
       <button 
-        
+        onClick={onAddProduct}
         className="px-4 py-2 m-2 rounded-md bg-lime-400 text-white"
       >
         Add
