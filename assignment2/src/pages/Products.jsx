@@ -6,7 +6,7 @@ import Table from "../components/core/Table.jsx";
 import InfiniteScroll from "../components/core/InfiniteScroll.jsx";
 import TableButtons from "../components/products/TableButtons.jsx";
 // import ProductForm from "../components/core/ProductForm.jsx";
-import Modal from "../components/core/Modal.jsx"; 
+import Modal from "../components/products/Modal.jsx"; 
 import {
   fetchAllProducts,
   fetchCategories,

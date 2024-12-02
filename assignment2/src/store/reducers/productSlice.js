@@ -75,16 +75,16 @@ export const updateProduct = createAsyncThunk(
   'product/updateProduct',
   async ({ productId, updatedData }, { dispatch, rejectWithValue }) => {
     try {
-      // Send the PUT request to the correct endpoint
+
       const response = await axios.put(
         `https://dummyjson.com/products/${productId}`, 
-        JSON.stringify(updatedData) // Send updatedData 
+        JSON.stringify(updatedData) // for updatedData 
       );
-      // Update the product in the Redux store using updateProductList
-      dispatch(updateProductList(response.data, getState));
-      return response.data; // Optionally return the updated product for use
+      
+      dispatch(setUpdatingProduct(response.data, getState));
+      return response.data; 
     } catch (error) {
-      dispatch(setError(error.message)); // Dispatch error action
+      dispatch(setError(error.message)); 
       return rejectWithValue(error.message);
     }
   }
@@ -103,7 +103,7 @@ export const addProduct = createAsyncThunk(
       
       dispatch(setAddedProduct(response.data));
     } catch (error) {
-      dispatch(setError(error.message)); // Dispatch error action
+      dispatch(setError(error.message)); 
       return rejectWithValue(error.message);
     } finally {
       dispatch(setLoading(false));
@@ -125,11 +125,7 @@ const productSlice = createSlice({
         state.products.push(action.payload);
       }
     },
-    setProductData: (state, action) => {
-      // This is the action to set products in the state (used in updateProductList)
-      state.products = action.payload;
 
-    },
     setAddedProduct: (state, action) => {
         // state.products = [...state.products, action.payload];
         state.updatingProduct = action.payload;
