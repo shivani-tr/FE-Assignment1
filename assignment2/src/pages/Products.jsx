@@ -124,7 +124,7 @@ const Products = () => {
         )}
       </div>
 
-      {/* Edit Product Modal */}
+      {/* Edit/add Product Modal */}
       {isModalOpen && (
       <Modal
       initialData={isAdding ? {} : updatingProduct} 
