@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Modal = ({ initialData, onClose, onSubmit }) => {
+const Modal = ({ initialData, onClose, handleModalSubmit }) => {
     const [formData, setFormData] = useState({
       title: "",
-      price: "",
+      price: 0,
       category: "",
     });
   
@@ -13,15 +13,20 @@ const Modal = ({ initialData, onClose, onSubmit }) => {
         setFormData(initialData);
       }
     }, [initialData]);
+
+    console.log(initialData, formData);
+    
   
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
     };
+
   
     const handleSubmit = (e) => {
-      e.preventDefault();
-      onSubmit(formData);
+
+     e.preventDefault();
+     handleModalSubmit(formData)
     };
   
     return (
@@ -44,7 +49,7 @@ const Modal = ({ initialData, onClose, onSubmit }) => {
                       type="text"
                       id="title"
                       name="title"
-                      value={formData.title}
+                      value={formData.title }
                       onChange={handleChange}
                       className="mt-1 p-2 border border-gray-300 rounded w-full"
                       required
@@ -58,7 +63,7 @@ const Modal = ({ initialData, onClose, onSubmit }) => {
                       type="number"
                       id="price"
                       name="price"
-                      value={formData.price}
+                      value={formData.price }
                       onChange={handleChange}
                       className="mt-1 p-2 border border-gray-300 rounded w-full"
                       required
@@ -72,7 +77,7 @@ const Modal = ({ initialData, onClose, onSubmit }) => {
                       type="text"
                       id="category"
                       name="category"
-                      value={formData.category}
+                      value={formData.category }
                       onChange={handleChange}
                       className="mt-1 p-2 border border-gray-300 rounded w-full"
                       required

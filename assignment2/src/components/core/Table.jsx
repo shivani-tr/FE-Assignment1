@@ -6,10 +6,7 @@ const Table = ({ data, header, isLink, onEdit }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const handleEdit = (product) => {
-    setSelectedProduct(product); // Set the product to be edited
-    setShowModal(true); // Open the modal
-  };
+
 
   if (!data || data.length === 0) return <p>No data available</p>;
 
@@ -60,7 +57,7 @@ const Table = ({ data, header, isLink, onEdit }) => {
                 ))}
                 <td className="text-center py-4 px-7 border border-gray-300">
                   <button
-                    onClick={() => handleEdit(dataItem)}
+                    onClick={() => onEdit(dataItem)}
                     className="text-blue-500 hover:text-blue-700"
                   >
                     Edit
@@ -71,13 +68,13 @@ const Table = ({ data, header, isLink, onEdit }) => {
           )}
         </tbody>
       </table>
-      {showModal && (
+      {/* {showModal && (
         <Modal
           initialData={selectedProduct}
           onClose={() => setShowModal(false)}
-          onSubmit={onEdit}
+          handleModalSubmit={onEdit}
         />
-      )}
+      )} */}
     </>
   );
 };

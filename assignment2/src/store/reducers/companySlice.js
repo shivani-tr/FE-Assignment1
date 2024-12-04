@@ -2,6 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const VARIABLE_NAME = "hello world";
 const initialState = {
     companyOverview: {},
     incomeStatement: {},

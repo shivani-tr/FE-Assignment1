@@ -16,7 +16,7 @@ const TableButtons = ({categories, selectedCategory, onCategoryChange,  onAddPro
     <div className="flex justify-start items-center">
       {categories.slice(0, 5).map((category) => {
         
-        const Icon = btnConfig[category.slug]?.component || GiCogLock; 
+        const Icon2 = btnConfig[category.slug]?.component || GiCogLock; 
 
         return (
           <button
@@ -26,7 +26,7 @@ const TableButtons = ({categories, selectedCategory, onCategoryChange,  onAddPro
               selectedCategory === category.slug ? "bg-indigo-700 text-white" : "bg-[#D4D8E5]"
             }`}
           >
-            <Icon className="inline-block mr-2" /> 
+            <Icon2 className="inline-block mr-2" /> 
             {category.name}
           </button>
         );

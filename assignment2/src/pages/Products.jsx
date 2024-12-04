@@ -21,6 +21,7 @@ import {
   selectedCategorySelector,
   productsSelector,
   loadingSelector,
+  isProductAddingSelector,
 } from "../store/selectors/ProductsSelectors.js";
 
 const Products = () => {
@@ -32,11 +33,13 @@ const Products = () => {
   const selectedCategory = useSelector(selectedCategorySelector);
   const products = useSelector(productsSelector);
   const loading = useSelector(loadingSelector);
+
+  const isAdding = useSelector(isProductAddingSelector)
   const updatingProduct = useSelector((state) => state.product.updatingProduct);
 
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isAdding, setIsAdding] = useState(false); 
   
+
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -68,16 +71,20 @@ const Products = () => {
 
   const handleAddProduct = () => {
     dispatch(setUpdatingProduct(null)); // Clear existing product data
-    setIsAdding(true); 
+
+
     setModalOpen(true);
   };
 
+
   const handleModalClose = () => {
-    setModalOpen(false);
     dispatch(setUpdatingProduct(null));
+    setModalOpen(false);
   };
 
   const handleFormSubmit = (updatedProduct) => {
+    console.log(updatedProduct);
+    
     if (isAdding) {
       // Add a new product
       dispatch(addProduct(updatedProduct));
@@ -128,7 +135,7 @@ const Products = () => {
       {isModalOpen && (
       <Modal
       initialData={isAdding ? {} : updatingProduct} 
-      onSubmit={handleFormSubmit}
+      handleModalSubmit={handleFormSubmit}
       onClose={handleModalClose}
       />
 )}

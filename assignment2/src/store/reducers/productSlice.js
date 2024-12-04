@@ -9,9 +9,10 @@ const initialState = {
   loading: false,
   error: null,
   updatingProduct: null, // Prefill
+  isProductAdding: false
 };
 
-// Slice
+// Slice 
 const productSlice = createSlice({
     name: 'product',
     initialState,
@@ -63,6 +64,10 @@ const productSlice = createSlice({
           }
         },
         
+
+        setIsProductAdding:(state,action) =>{
+          state.isProductAdding= action.payload
+        }
     },
   });
   
@@ -129,7 +134,7 @@ export const fetchCategories = createAsyncThunk(
 // Update product (PUT)
 export const updateProduct = createAsyncThunk(
   'product/updateProduct',
-  async ({ productId, updatedData }, { dispatch, rejectWithValue }) => {
+  async ({ productId, updatedData }, { dispatch }) => {
     try {
 
       const response = await axios.put(
@@ -137,11 +142,11 @@ export const updateProduct = createAsyncThunk(
         JSON.stringify(updatedData) // for updatedData 
       );
       
-      dispatch(setUpdatingProduct(response.data, getState));
+      dispatch(setUpdatingProduct(response.data));
       return response.data; 
     } catch (error) {
       dispatch(setError(error.message)); 
-      return rejectWithValue(error.message);
+      // return rejectWithValue(error.message);
     }
   }
 );
@@ -182,6 +187,7 @@ export const {
   setAddedProduct,
   setUpdatingProduct,
   setProductData, 
+  setIsProductAdding
 } = productSlice.actions;
 
 export default productSlice.reducer;
