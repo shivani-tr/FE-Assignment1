@@ -48,26 +48,28 @@ const productSlice = createSlice({
             state.products = [];
         },
         setAddedProduct: (state, action) => {
-            state.updatingProduct = action.payload;
-            state.products = [...state.products, state.updatingProduct];  // adding new products to the end of existing products
-        },      
-      setUpdatingProduct: (state, action) => {
+          // state.products = [...state.products, action.payload];
           state.updatingProduct = action.payload;
-          if (action.payload) {
-            const index = state.products.findIndex((pro) => pro.id === action.payload.id);
-            if (index !== -1) {
-              state.products[index] = {
-                ...state.products[index],
-                ...action.payload,
-              };
-            }
+          state.products = [...state.products, state.updatingProduct]; //adding new product at the end of existing products
+      },      
+      setUpdatingProduct: (state, action) => {
+        state.updatingProduct = action.payload;
+
+        if (action.payload) {
+          const index = state.products.findIndex((pro) => pro.id === action.payload.id);
+          if (index !== -1) {
+            state.products[index] = {
+              ...state.products[index],
+              ...action.payload,
+            };
           }
-        },
+        }
+      },
         
 
-        setIsProductAdding:(state,action) =>{
-          state.isProductAdding= action.payload
-        }
+        // setIsProductAdding:(state,action) =>{
+        //   state.isProductAdding= action.payload
+        // }
     },
   });
   

@@ -6,7 +6,8 @@ import Table from "../components/core/Table.jsx";
 import InfiniteScroll from "../components/core/InfiniteScroll.jsx";
 import TableButtons from "../components/products/TableButtons.jsx";
 // import ProductForm from "../components/core/ProductForm.jsx";
-import Modal from "../components/products/Modal.jsx"; 
+import Modal from "../components/core/Modal.jsx"; 
+import ProductForm from "../components/products/ProductForm.jsx";
 import {
   fetchAllProducts,
   fetchCategories,
@@ -34,7 +35,7 @@ const Products = () => {
   const products = useSelector(productsSelector);
   const loading = useSelector(loadingSelector);
 
-  const isAdding = useSelector(isProductAddingSelector)
+  const [isAdding, setIsAdding] = useState(false);
   const updatingProduct = useSelector((state) => state.product.updatingProduct);
 
   const [isModalOpen, setModalOpen] = useState(false);
@@ -71,20 +72,33 @@ const Products = () => {
 
   const handleAddProduct = () => {
     dispatch(setUpdatingProduct(null)); // Clear existing product data
-
-
+    setIsAdding(true); 
     setModalOpen(true);
   };
 
 
   const handleModalClose = () => {
     dispatch(setUpdatingProduct(null));
+    dispatch(setAddedProduct());
     setModalOpen(false);
   };
 
-  const handleFormSubmit = (updatedProduct) => {
-    console.log(updatedProduct);
+  // const handleFormSubmit = (updatedProduct) => {
+  //   console.log(updatedProduct);
     
+  //   if (isAdding) {
+  //     // Add a new product
+  //     dispatch(addProduct(updatedProduct));
+  //   } else {
+  //     // Update an existing product
+  //     dispatch(updateProduct({ productId: updatingProduct.id, updatedData: updatedProduct }));
+  //     // console.log("Updated Product:", updatedProduct);
+  //     // console.log('Submitting update for product with ID:', updatingProduct.id); // Log product ID
+  //   }
+  //   setModalOpen(false);
+  // };
+  
+  const handleFormSubmit = (updatedProduct) => {
     if (isAdding) {
       // Add a new product
       dispatch(addProduct(updatedProduct));
@@ -133,11 +147,14 @@ const Products = () => {
 
       {/* Edit/add Product Modal */}
       {isModalOpen && (
-      <Modal
-      initialData={isAdding ? {} : updatingProduct} 
-      handleModalSubmit={handleFormSubmit}
-      onClose={handleModalClose}
+      <Modal onClose={handleModalClose}>
+      <ProductForm
+        initialData={isAdding ? {} : updatingProduct}
+        onSubmit={handleFormSubmit}
+        onCancel={handleModalClose}
       />
+    </Modal>
+    
 )}
 
     </>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modal from "../products/Modal";
+import Modal from "./Modal";
 
 const Table = ({ data, header, isLink, onEdit }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
