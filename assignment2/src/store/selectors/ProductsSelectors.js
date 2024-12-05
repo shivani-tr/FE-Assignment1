@@ -17,6 +17,22 @@ export const loadingSelector = createSelector(
     (productSlice) => productSlice.loading
 )
 
+export const updatingSelector = createSelector(
+    productsStore,
+    (productSlice) => productSlice.updatingProduct
+)
+
+export const isProductAddingSelector = createSelector(
+    productsStore,
+    (productSlice) => productSlice.isProductAdding
+)
+//doubt, it can be handled with productsSelector too
+export const updatingProductStateSelector = createSelector(
+    productsStore,
+    (productSlice) => productSlice.products
+)
+
+
 
 
 //   const selectedCategory = useSelector((state) => state.product.selectedCategory);

@@ -1,84 +1,38 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Initial state
 const initialState = {
-    products: [],
-    categories: [],
-    selectedCategory: null,
-    pagination: { limit: 15, skip: 0, page: 1 },
-    loading: false,
-    error: null,
+  products: [],  //for storing products 
+  categories: [], //for 5 categories used
+  selectedCategory: null, // the category we selected
+  pagination: { limit: 15, skip: 0, page: 1 }, // for infinite scroll
+  loading: false,
+  error: null,
+  updatingProduct: null, // Prefill
+  isProductAdding: false
 };
 
-
-
-// Fetch all products
-export const fetchAllProducts = createAsyncThunk(
-    'product/fetchAllProducts',
-    async (_, { dispatch, getState, rejectWithValue }) => {
-        const { limit, skip } = getState().product.pagination;
-        dispatch(setLoading(true)); 
-        try {
-            const response = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
-            dispatch(setProducts(response.data.products)); 
-        } catch (error) {
-            return rejectWithValue(error.message); 
-        } finally {
-            dispatch(setLoading(false)); 
-        }
-    }
-);
-
-// Fetch products by category
-export const fetchProductsByCategory = createAsyncThunk(
-    'product/fetchProductsByCategory',
-    async (category, { dispatch, getState, rejectWithValue }) => {
-        const { limit, skip } = getState().product.pagination;
-        dispatch(setLoading(true)); 
-        try {
-            const response = await axios.get(`https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`);
-            dispatch(setProducts(response.data.products)); 
-        } catch (error) {
-            return rejectWithValue(error.message); 
-        } finally {
-            dispatch(setLoading(false)); 
-        }
-    }
-);
-
-// Fetch categories
-export const fetchCategories = createAsyncThunk(
-    'product/fetchCategories',
-    async (_, { dispatch, rejectWithValue }) => {
-        dispatch(setLoading(true)); 
-        try {
-            const response = await axios.get(`https://dummyjson.com/products/categories`);
-            dispatch(setCategories(response.data.slice(0, 5))); 
-        } catch (error) {
-            return rejectWithValue(error.message); 
-        } finally {
-            dispatch(setLoading(false)); 
-        }
-    }
-);
-
-
+// Slice 
 const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        setProducts: (state, action) => {
-            state.products = [...state.products, ...action.payload];
-        },
-        setCategories: (state, action) => {
-            state.categories = action.payload;
+      setProducts: (state, action) => {
+        if (Array.isArray(action.payload)) {
+          state.products = [...action.payload];
+        } else {
+          state.products.push(action.payload);
+        }
+      },
+  
+      setCategories: (state, action) => {
+          state.categories = action.payload;
         },
         setSelectedCategory: (state, action) => {
             state.selectedCategory = action.payload;
             state.pagination.skip = 0;
             state.pagination.page = 1;
-            state.products = []; 
+            state.products = [];
         },
         setLoading: (state, action) => {
             state.loading = action.payload;
@@ -89,16 +43,153 @@ const productSlice = createSlice({
         incrementPage: (state) => {
             state.pagination.page += 1;
             state.pagination.skip = (state.pagination.page - 1) * state.pagination.limit;
-          },
+        },
         resetProducts: (state) => {
             state.products = [];
         },
+        setAddedProduct: (state, action) => {
+          // state.products = [...state.products, action.payload];
+          state.updatingProduct = action.payload;
+          state.products = [...state.products, state.updatingProduct]; //adding new product at the end of existing products
+      },      
+      setUpdatingProduct: (state, action) => {
+        state.updatingProduct = action.payload;
+
+        if (action.payload) {
+          const index = state.products.findIndex((pro) => pro.id === action.payload.id);
+          if (index !== -1) {
+            state.products[index] = {
+              ...state.products[index],
+              ...action.payload,
+            };
+          }
+        }
+      },
+        
+
+        // setIsProductAdding:(state,action) =>{
+        //   state.isProductAdding= action.payload
+        // }
     },
-});
+  });
+  
+
+// Fetch all products
+export const fetchAllProducts = createAsyncThunk(
+  'product/fetchAllProducts',
+  async (_, { dispatch, getState, rejectWithValue }) => {
+    const { limit, skip } = getState().product.pagination;
+    dispatch(setLoading(true));
+    try {
+      const response = await axios.get(
+        `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
+      );
+      dispatch(setProducts(response.data.products));
+    } catch (error) {
+      dispatch(setError(error.message));
+      return rejectWithValue(error.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  }
+);
+
+// Fetch products by category
+export const fetchProductsByCategory = createAsyncThunk(
+  'product/fetchProductsByCategory',
+  async (category, { dispatch, getState, rejectWithValue }) => {
+    const { limit, skip } = getState().product.pagination;
+    dispatch(setLoading(true));
+    try {
+      const response = await axios.get(
+        `https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`
+      );
+      dispatch(setProducts(response.data.products));
+    } catch (error) {
+      dispatch(setError(error.message));
+      return rejectWithValue(error.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  }
+);
+
+// Fetch categories
+export const fetchCategories = createAsyncThunk(
+  'product/fetchCategories',
+  async (_, { dispatch, rejectWithValue }) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await axios.get(
+        'https://dummyjson.com/products/categories'
+      );
+      dispatch(setCategories(response.data.slice(0, 5)));
+    } catch (error) {
+      dispatch(setError(error.message));
+      return rejectWithValue(error.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  }
+);
+
+// Update product (PUT)
+export const updateProduct = createAsyncThunk(
+  'product/updateProduct',
+  async ({ productId, updatedData }, { dispatch }) => {
+    try {
+
+      const response = await axios.put(
+        `https://dummyjson.com/products/${productId}`, 
+        JSON.stringify(updatedData) // for updatedData 
+      );
+      
+      dispatch(setUpdatingProduct(response.data));
+      return response.data; 
+    } catch (error) {
+      dispatch(setError(error.message)); 
+      // return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Add a new product (POST)
+export const addProduct = createAsyncThunk(
+  'product/addProduct',
+  async (productData, { dispatch, rejectWithValue }) => {
+    dispatch(setLoading(true));
+    try {
+      const response = await axios.post(
+        'https://dummyjson.com/products/add',
+        productData
+      );
+      
+      dispatch(setAddedProduct(response.data));
+    } catch (error) {
+      dispatch(setError(error.message)); 
+      return rejectWithValue(error.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  }
+);
 
 
-export const { setProducts, setCategories, setSelectedCategory, setLoading, setError, incrementPage, resetProducts } = productSlice.actions;
+
+
+export const {
+  setProducts,
+  addProductToState,
+  setCategories,
+  setSelectedCategory,
+  setLoading,
+  setError,
+  incrementPage,
+  resetProducts,
+  setAddedProduct,
+  setUpdatingProduct,
+  setProductData, 
+  setIsProductAdding
+} = productSlice.actions;
 
 export default productSlice.reducer;
-
-

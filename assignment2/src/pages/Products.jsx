@@ -1,21 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { header } from "../data/product.json";
 import { useSelector, useDispatch } from "react-redux";
 import Table from "../components/core/Table.jsx";
 import InfiniteScroll from "../components/core/InfiniteScroll.jsx";
-import { 
-  fetchAllProducts, 
-  fetchCategories, 
-  fetchProductsByCategory, 
-  setSelectedCategory 
-} from "../store/reducers/productSlice.js";
-import { 
-  selectedCategorySelector, 
-  productsSelector, 
-  loadingSelector 
-} from "../store/selectors/ProductsSelectors.js";
 import TableButtons from "../components/products/TableButtons.jsx";
+// import ProductForm from "../components/core/ProductForm.jsx";
+import Modal from "../components/core/Modal.jsx"; 
+import ProductForm from "../components/products/ProductForm.jsx";
+import {
+  fetchAllProducts,
+  fetchCategories,
+  fetchProductsByCategory,
+  setSelectedCategory,
+  setUpdatingProduct,
+  setAddedProduct,
+  updateProduct,
+  addProduct
+} from "../store/reducers/productSlice.js";
+import {
+  selectedCategorySelector,
+  productsSelector,
+  loadingSelector,
+  isProductAddingSelector,
+} from "../store/selectors/ProductsSelectors.js";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -27,11 +35,18 @@ const Products = () => {
   const products = useSelector(productsSelector);
   const loading = useSelector(loadingSelector);
 
+  const [isAdding, setIsAdding] = useState(false);
+  const updatingProduct = useSelector((state) => state.product.updatingProduct);
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  
+
+
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
 
-  // when category changes
+  // Fetch products based on category changes
   useEffect(() => {
     if (category) {
       dispatch(setSelectedCategory(category));
@@ -42,14 +57,61 @@ const Products = () => {
     }
   }, [category]);
 
- 
   const handleCategoryChange = (newCategory) => {
     if (newCategory) {
       setSearchParams({ category: newCategory });
     } else {
-      setSearchParams({}); 
+      setSearchParams({});
     }
   };
+
+  const handleEdit = (product) => {
+    dispatch(setUpdatingProduct(product));
+    setModalOpen(true);
+  };
+
+  const handleAddProduct = () => {
+    dispatch(setUpdatingProduct(null)); // Clear existing product data
+    setIsAdding(true); 
+    setModalOpen(true);
+  };
+
+
+  const handleModalClose = () => {
+    dispatch(setUpdatingProduct(null));
+    dispatch(setAddedProduct());
+    setModalOpen(false);
+  };
+
+  // const handleFormSubmit = (updatedProduct) => {
+  //   console.log(updatedProduct);
+    
+  //   if (isAdding) {
+  //     // Add a new product
+  //     dispatch(addProduct(updatedProduct));
+  //   } else {
+  //     // Update an existing product
+  //     dispatch(updateProduct({ productId: updatingProduct.id, updatedData: updatedProduct }));
+  //     // console.log("Updated Product:", updatedProduct);
+  //     // console.log('Submitting update for product with ID:', updatingProduct.id); // Log product ID
+  //   }
+  //   setModalOpen(false);
+  // };
+  
+  const handleFormSubmit = (updatedProduct) => {
+    if (isAdding) {
+      // Add a new product
+      dispatch(addProduct(updatedProduct));
+    } else {
+      // Update an existing product
+      dispatch(updateProduct({ productId: updatingProduct.id, updatedData: updatedProduct }));
+      // console.log("Updated Product:", updatedProduct);
+      // console.log('Submitting update for product with ID:', updatingProduct.id); // Log product ID
+    }
+    setModalOpen(false);
+  };
+  
+  
 
   return (
     <>
@@ -59,18 +121,42 @@ const Products = () => {
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
+          onAddProduct={handleAddProduct} 
         />
         {selectedCategory ? (
           <>
-            <Table data={products} header={header} isLink={false} />
+            <Table
+              data={products}
+              header={header}
+              isLink={false}
+              onEdit={handleEdit}
+            />
             {loading && <div className="text-center">Loading...</div>}
           </>
         ) : (
           <InfiniteScroll>
-            <Table data={products} header={header} isLink={false} />
+            <Table
+              data={products}
+              header={header}
+              isLink={false}
+              onEdit={handleEdit}
+            />
           </InfiniteScroll>
         )}
       </div>
+
+      {/* Edit/add Product Modal */}
+      {isModalOpen && (
+      <Modal onClose={handleModalClose}>
+      <ProductForm
+        initialData={isAdding ? {} : updatingProduct}
+        onSubmit={handleFormSubmit}
+        onCancel={handleModalClose}
+      />
+    </Modal>
+    
+)}
+
     </>
   );
 };

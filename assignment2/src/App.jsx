@@ -5,11 +5,13 @@ import Products from './pages/Products.jsx';
 import Landing from './components/Landing.jsx'
 import { store } from './store/store.js'
 import { Provider } from 'react-redux'
+import { VARIABLE_NAME as VARIABLE_NAME_NICE } from './store/reducers/companySlice.js';
 function App() {
   
 
   return (
     <Provider store={store}>
+      {VARIABLE_NAME_NICE}
       <Router>
       <Routes>
         <Route path="/" element={<Landing />} />

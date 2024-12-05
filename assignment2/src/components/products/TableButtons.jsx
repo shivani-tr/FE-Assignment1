@@ -11,12 +11,12 @@ const btnConfig = {
   "home-decoration": { component: GiCeilingLight },
 };
 
-const TableButtons = ({categories, selectedCategory, onCategoryChange}) => {
+const TableButtons = ({categories, selectedCategory, onCategoryChange,  onAddProduct}) => {
   return (
     <div className="flex justify-start items-center">
       {categories.slice(0, 5).map((category) => {
         
-        const Icon = btnConfig[category.slug]?.component || GiCogLock; 
+        const Icon2 = btnConfig[category.slug]?.component || GiCogLock; 
 
         return (
           <button
@@ -26,7 +26,7 @@ const TableButtons = ({categories, selectedCategory, onCategoryChange}) => {
               selectedCategory === category.slug ? "bg-indigo-700 text-white" : "bg-[#D4D8E5]"
             }`}
           >
-            <Icon className="inline-block mr-2" /> 
+            <Icon2 className="inline-block mr-2" /> 
             {category.name}
           </button>
         );
@@ -36,6 +36,12 @@ const TableButtons = ({categories, selectedCategory, onCategoryChange}) => {
         className="px-4 py-2 m-2 rounded-md bg-red-300 text-white"
       >
         Clear
+      </button>
+      <button 
+        onClick={onAddProduct}
+        className="px-4 py-2 m-2 rounded-md bg-lime-400 text-white"
+      >
+        Add
       </button>
     </div>
   );
